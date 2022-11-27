@@ -8,10 +8,14 @@ import {
   Text,
   HStack,
 } from "@chakra-ui/react";
+import { Tooltip } from "@chakra-ui/react";
 // Here we have used react-icons package for the icons
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 // And react-slick as our Carousel Lib
 import Slider from "react-slick";
+
+// context Api
+import { CartState } from "../Pages/Context/context";
 
 // Settings for the slider
 const settings = {
@@ -33,36 +37,24 @@ function Herocarousel() {
 
   // These are the breakpoints which changes the position of the
   // buttons as the screen size changes
-  const top = useBreakpointValue({ base: "80%", md: "50%", sm: "85%" });
+  const top = useBreakpointValue({ base: "84%", md: "50%", sm: "85%" });
   const side = useBreakpointValue({ base: "5%", md: "5%" });
   const right = useBreakpointValue({ base: "5%", md: "5%" });
 
+  const {
+    state: { products },
+  } = CartState();
+
   // This list contains all the data for carousels
   // This can be static or loaded from a server
-  const cards = [
-    {
-      title: "Design Projects 1",
-      text: "The project board is an exclusive resource for contract work.",
-      image:
-        "https://images.pexels.com/photos/38537/woodland-road-falling-leaf-natural-38537.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    },
-    {
-      title: "Design Projects 2",
-      text: "The project board is an exclusive resource for contract work. ",
-      image:
-        "https://images.pexels.com/photos/301375/pexels-photo-301375.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    },
-    {
-      title: "Design Projects 3",
-      text: "The project board is an exclusive resource for contract work.",
-      image:
-        "https://images.pexels.com/photos/5769337/pexels-photo-5769337.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    },
-  ];
 
-  useEffect(() => {
-    
-  }, []);
+  let ShowcaseProduct = [];
+  const Item = products;
+  if (Item.length > 0) {
+    for (let index = 0; index < 4; index++) {
+      ShowcaseProduct = [...ShowcaseProduct, Item[index]];
+    }
+  }
 
   return (
     <>
@@ -96,8 +88,9 @@ function Herocarousel() {
 
           {/* Slider */}
           <Slider {...settings} ref={(slider) => setSlider(slider)}>
-            {cards.map((card, index) => (
+            {ShowcaseProduct.map((card, index) => (
               <Box
+                border={"1px solid"}
                 key={Math.random().toString()}
                 height={["40vh", "50vh", "50vh", "60vh"]}
                 position="relative"
@@ -105,6 +98,7 @@ function Herocarousel() {
                 backgroundRepeat="no-repeat"
                 backgroundSize={"cover"}
                 backgroundImage={`url(${card.image})`}
+                bgSize={["50%", "40%", "30%"]}
               >
                 <HStack
                   display="flex"
@@ -121,7 +115,7 @@ function Herocarousel() {
                     borderRadius="md"
                     zIndex={2}
                     variant="ghost"
-                    color="#fff"
+                    color="orange"
                     _hover={{ color: "orange", bg: "white" }}
                     onClick={() => slider?.slickPrev()}
                   >
@@ -132,7 +126,7 @@ function Herocarousel() {
 
                   <IconButton
                     aria-label="right-arrow"
-                    color="#fff"
+                    color="orange"
                     borderRadius="md"
                     zIndex={2}
                     variant="ghost"
@@ -151,31 +145,22 @@ function Herocarousel() {
                   justifyContent={["center", "center", "center", "center"]}
                   alignItems="center"
                   position="absolute"
-                  top={["5%", "5%", "5%", "5%"]}
+                  border={"1px solid red"}
+                  top={["60%", "5%", "50%", "5%"]}
                   left={["null", "5%", "15%", "15%"]}
                   right={["null", "5%", "15%", "15%"]}
                   transform="translate(0, 5%)"
-                  height={["30vh", "35vh", "40vh", "45vh"]}
+                  width={"100%"}
+                  height={["10vh", "20vh", "20vh", "20vh"]}
                   // padd
                   px={["1rem", "1rem"]}
-                  // width
-                  // border={[
-                  //   "1px solid red",
-                  //   "1px solid green",
-                  //   "1px solid blue",
-                  //   "1px solid yellow",
-                  // ]}
                 >
-                  <Heading fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}>
+                  <Heading
+                    fontSize={{ base: "lg", md: "2xl", lg: "3xl" }}
+                    noOfLines={["1"]}
+                  >
                     {card.title}
                   </Heading>
-                  <Text
-                    textAlign={["left"]}
-                    fontSize={{ base: "1rem", lg: "lg" }}
-                    color="white"
-                  >
-                    {card.text}
-                  </Text>
                 </Stack>
               </Box>
             ))}
