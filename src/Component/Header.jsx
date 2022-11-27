@@ -301,7 +301,7 @@ const NavBarContainer = ({ children, ...props }) => {
       as="nav"
       justifyContent={["space-between", "space-between", "space-between"]}
       alignItems={["center", "center", "center", "center"]}
-      w="100vw"
+      // w="100vw"
       columnGap={{ md: "2rem", lg: "1.5rem", xl: ".5rem" }}
       px={["3%", "1.5%", "1.6%", "1.8%"]}
       py={["2%", "1.5%", "1.6%", "1.8%"]}
