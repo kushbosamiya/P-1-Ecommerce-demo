@@ -37,7 +37,7 @@ function Herocarousel() {
 
   // These are the breakpoints which changes the position of the
   // buttons as the screen size changes
-  const top = useBreakpointValue({ base: "84%", md: "50%", sm: "85%" });
+  const top = useBreakpointValue({ base: "82%", md: "78%", xl: "88%" });
   const side = useBreakpointValue({ base: "5%", md: "5%" });
   const right = useBreakpointValue({ base: "5%", md: "5%" });
 
@@ -47,7 +47,6 @@ function Herocarousel() {
 
   // This list contains all the data for carousels
   // This can be static or loaded from a server
-
   let ShowcaseProduct = [];
   const Item = products;
   if (Item.length > 0) {
@@ -88,82 +87,82 @@ function Herocarousel() {
 
           {/* Slider */}
           <Slider {...settings} ref={(slider) => setSlider(slider)}>
-            {ShowcaseProduct.map((card, index) => (
-              <Box
-                border={"1px solid"}
-                key={Math.random().toString()}
-                height={["40vh", "50vh", "50vh", "60vh"]}
-                position="relative"
-                backgroundPosition="center"
-                backgroundRepeat="no-repeat"
-                backgroundSize={"cover"}
-                backgroundImage={`url(${card.image})`}
-                bgSize={["50%", "40%", "30%"]}
-              >
-                <HStack
-                  display="flex"
-                  justifyContent="space-between"
-                  alignItems="center"
-                  pos={"absolute"}
-                  left={side}
-                  top={top}
-                  right={right}
+            {ShowcaseProduct.map((card, index) => {
+              return (
+                <Box
+                  // border={"1px solid"}
+                  key={Math.random().toString()}
+                  height={["40vh", "50vh", "55vh", "60vh"]}
+                  backgroundPosition="10% center"
+                  backgroundRepeat="no-repeat"
+                  backgroundSize={"cover"}
+                  backgroundImage={`url(${card.image})`}
+                  bgSize={["50%", "60%", "34%", "32%"]}
                 >
-                  {/* Left Icon */}
-                  <IconButton
-                    aria-label="left-arrow"
-                    borderRadius="md"
-                    zIndex={2}
-                    variant="ghost"
-                    color="orange"
-                    _hover={{ color: "orange", bg: "white" }}
-                    onClick={() => slider?.slickPrev()}
+                  <HStack
+                    display="flex"
+                    justifyContent={["flex-end"]}
+                    alignItems="center"
+                    pos={"absolute"}
+                    gap={{ base: ".75rem", md: "1rem" }}
+                    left={side}
+                    top={top}
+                    right={right}
                   >
-                    <BiLeftArrowAlt />
-                  </IconButton>
+                    {/* Left Icon */}
+                    <IconButton
+                      aria-label="left-arrow"
+                      borderRadius="md"
+                      zIndex={2}
+                      variant="ghost"
+                      color="orange"
+                      _hover={{ color: "orange", bg: "white" }}
+                      onClick={() => slider?.slickPrev()}
+                    >
+                      <BiLeftArrowAlt size={24} />
+                    </IconButton>
 
-                  {/* Right Icon */}
+                    {/* Right Icon */}
 
-                  <IconButton
-                    aria-label="right-arrow"
-                    color="orange"
-                    borderRadius="md"
-                    zIndex={2}
-                    variant="ghost"
-                    // transform={"translate(0%, 50%)"}
-                    onClick={() => slider?.slickNext()}
-                    _hover={{ color: "orange", bg: "white" }}
+                    <IconButton
+                      aria-label="right-arrow"
+                      color="orange"
+                      borderRadius="md"
+                      zIndex={2}
+                      variant="ghost"
+                      // transform={"translate(0%, 50%)"}
+                      onClick={() => slider?.slickNext()}
+                      _hover={{ color: "orange", bg: "white" }}
+                    >
+                      <BiRightArrowAlt size={24} />
+                    </IconButton>
+                  </HStack>
+
+                  <Stack
+                    display="flex"
+                    flexDirection="column"
+                    gap={[".5rem"]}
+                    justifyContent={["center", "center", "center", "center"]}
+                    alignItems="center"
+                    position="absolute"
+                    top={["38%", "25%", "30%"]}
+                    left={["58%", "68%", "50%", "55%"]}
+                    right={["7%", "5%", "15%", "15%"]}
+                    transform="translate(0, 5%)"
+                    height={["10vh", "20vh", "20vh", "20vh"]}
+                    width={["40%"]}
+                    px={["1rem", "1rem"]}
                   >
-                    <BiRightArrowAlt />
-                  </IconButton>
-                </HStack>
-
-                <Stack
-                  display="flex"
-                  flexDirection="column"
-                  gap={[".5rem"]}
-                  justifyContent={["center", "center", "center", "center"]}
-                  alignItems="center"
-                  position="absolute"
-                  border={"1px solid red"}
-                  top={["60%", "5%", "50%", "5%"]}
-                  left={["null", "5%", "15%", "15%"]}
-                  right={["null", "5%", "15%", "15%"]}
-                  transform="translate(0, 5%)"
-                  width={"100%"}
-                  height={["10vh", "20vh", "20vh", "20vh"]}
-                  // padd
-                  px={["1rem", "1rem"]}
-                >
-                  <Heading
-                    fontSize={{ base: "lg", md: "2xl", lg: "3xl" }}
-                    noOfLines={["1"]}
-                  >
-                    {card.title}
-                  </Heading>
-                </Stack>
-              </Box>
-            ))}
+                    <Heading
+                      fontSize={{ base: "md", md: "lg", lg: "larger" }}
+                      width={["100%"]}
+                    >
+                      {card.name}
+                    </Heading>
+                  </Stack>
+                </Box>
+              );
+            })}
           </Slider>
         </Box>
       </Box>

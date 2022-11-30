@@ -67,7 +67,7 @@ function ProdContainerItem() {
       >
         {ShowcaseProduct.map(function ({
           id,
-          title,
+          name,
           image,
           description,
           price,
@@ -88,10 +88,8 @@ function ProdContainerItem() {
                   overflow={"hidden"}
                   h={"250px"}
                   w={"100%"}
-                  // bg={"gray.100"}
+                  bg={"gray.100"}
                   pos={"relative"}
-                  display={"inline-flex"}
-                  justifyContent={"center"}
                 >
                   <Button
                     display="none"
@@ -122,13 +120,13 @@ function ProdContainerItem() {
                             />
                             <ModalContent>
                               <ModalHeader>
-                                <Box>
+                                <Box pl="8%">
                                   <Image
-                                    margin={"0 auto"}
                                     src={image}
-                                    objectFit={"cover"}
-                                    alt={title}
-                                    width={"50%"}
+                                    borderRadius="md"
+                                    alt={name}
+                                    width={"90%"}
+                                    height="auto"
                                   />
                                 </Box>
                               </ModalHeader>
@@ -139,10 +137,10 @@ function ProdContainerItem() {
                                   fontWeight={"bold"}
                                   fontFamily="montserrat"
                                 >
-                                  {title}
+                                  {name}
                                 </Text>
 
-                                <Text py="5" fontFamily="poppins">
+                                <Text py="5" FontFamily="poppins">
                                   {description}
                                 </Text>
                               </ModalBody>
@@ -165,12 +163,13 @@ function ProdContainerItem() {
 
                   <Image
                     transform="scale(1.0)"
-                    // rounded={"md"}
-                    width={"80%"}
-                    objectFit={"contain"}
+                    rounded={"md"}
+                    height={"100%"}
+                    width={"100%"}
+                    objectFit={"cover"}
                     src={image}
                     _hover={{
-                      transform: "scale(1.02)",
+                      transform: "scale(1.05)",
                       transition: "0.3s ease-in-out",
                     }}
                   />
@@ -182,9 +181,8 @@ function ProdContainerItem() {
                     textAlign="center"
                     textTransform={"uppercase"}
                     fontFamily="montserrat"
-                    noOfLines={"2"}
                   >
-                    {title}
+                    {name}
                   </Text>
                   <Stack
                     direction={"row"}

@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 import { Box, Flex } from "@chakra-ui/react";
 import FilterCard from "./FilterComponent";
 import CartItems from "./CartItems";
@@ -60,15 +60,12 @@ const FilterPortion = ({ children, ...props }) => {
 const CartItemsPortion = ({ children, ...props }) => {
   const {
     state: { products },
-    productState: { sort, byStock,  },
+    productState: { sort, byStock },
   } = CartState();
 
   // const [Category, setCategory] = useState(
   //   [...products].map((item) => item.category)
   // );
-
-
-  
 
   const transformProducts = () => {
     let sortedProducts = products;

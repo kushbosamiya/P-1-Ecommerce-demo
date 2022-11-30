@@ -48,35 +48,34 @@ const BlogSection = () => {
         </Heading>
       </Box>
       <Box
-        mx={{ xl: "10%", lg: "10%", md: "10%" }}
-        display={{ sm: "flex", md: "grid" }}
+        mx={{ xl: "2%", lg: "10%", md: "10%" }}
+        display={["flex"]}
         pl={{ xl: "1rem", lg: "1rem" }}
         pr={{ xl: "1rem", lg: "1rem" }}
-        flexDirection={{ sm: "column" }}
-        gridTemplateColumns={{
-          md: "repeat(2, 1fr)",
-          lg: "repeat(3, 1fr)",
-          xl: "repeat(3, 1fr)",
-        }}
-        // justifyContent={'space-between'}
+        flexDirection={["column", "row"]}
+        justifyContent={["center", "space-around"]}
+        flexWrap={"wrap"}
         padding={["1rem", "1rem"]}
         // mx={{ xl: "10%", lg: "10%", md: "10%" }}
-        gap={10}
+        //    gap={10}
       >
         {DisplaythreePost.map((data, index) => (
           <Stack
             key={data.id}
             border="1px solid #E7EBF0"
+            maxW={["360px"]}
             rounded={"md"}
+            flexWrap={"wrap"}
             p={4}
             overflow={"hidden"}
             mb={["1rem", "1rem"]}
           >
             <Box
-              h={"220px"}
-              bg={"gray.100"}
+              // h={{md:'220px'}}
+              // bg={"gray.100"}
               // mt={-6}
               // mx={-6}
+              display={"flex"}
               mb={6}
               // pos={"relative"}
             >
@@ -85,7 +84,7 @@ const BlogSection = () => {
                 src={data.coverImage}
                 layout={"cover"}
                 h="100%"
-                w="100%"
+                // maxW={["80%", "100%"]}
                 key={data.slug}
                 transition="0.3s ease-in-out"
               />
@@ -115,12 +114,7 @@ const BlogSection = () => {
                 {data.brief}
               </Text>
             </Stack>
-            <Stack
-              mt={6}
-              direction={"row"}
-              spacing={4}
-              align="center"
-            >
+            <Stack mt={6} direction={"row"} spacing={4} align="center">
               <Avatar name="Vaishali Parekh" alt={"Author"} />
               <Stack direction={"column"} spacing={0} fontSize={"sm"}>
                 <Text fontWeight={600}>Vaishali Parekh</Text>

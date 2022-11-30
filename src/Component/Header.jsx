@@ -66,12 +66,17 @@ const LogoComponent = () => {
   return (
     <Box
       display="inline-flex"
-      justifyContent={["flex-start"]}
+      justifyContent={["center", "flex-start"]}
       alignItems={["center"]}
-      width={["100%"]}
+      width={{ base: "40%", md: "100%   " }}
       onClick={() => navigate("/")}
     >
-      <Image src={Logo} alt="logo" width={["60%", "70%", "80%", "90%"]} />
+      <Image
+        src={Logo}
+        alt="logo"
+        width={["100%", "60%", "100%"]}
+        objectFit={"cover"}
+      />
     </Box>
   );
 };
@@ -186,7 +191,7 @@ const MenuLinks = ({ isOpen, onOpen, onClose }) => {
         spacing={8}
         gap={["1.5rem"]}
         align={["center", "center", "center", "center"]}
-        justify={["center", "space-around", "space-around", "space-around"]}
+        justify={["center", "space-around", "space-around", "space-around"] }
         direction={["column", "row", "row", "row"]}
       >
         <Box display={["flex"]} alignItems={["center"]}>
@@ -213,7 +218,7 @@ const MenuLinks = ({ isOpen, onOpen, onClose }) => {
             textAlign={["center"]}
             onClick={() => navigate("/products")}
           >
-            Products
+            Shop Now
           </Text>
           {/* </Link> */}
           <Box display={{ md: "none" }}>
@@ -221,7 +226,7 @@ const MenuLinks = ({ isOpen, onOpen, onClose }) => {
           </Box>
         </Box>
 
-        <Box display={["flex"]} alignItems={["center"]}>
+        {/* <Box display={["flex"]} alignItems={["center"]}>
           <Text
             display="block"
             _hover={{ color: "orange.500", cursor: "pointer" }}
@@ -229,16 +234,16 @@ const MenuLinks = ({ isOpen, onOpen, onClose }) => {
             textAlign={["center"]}
             onClick={() => navigate("/academy")}
           >
-            {/* Training and Consultation */}
+            
             Academy
           </Text>
 
           <Box display={{ md: "none" }}>
             <ChevronRightIcon />
           </Box>
-        </Box>
+        </Box> */}
 
-        <Box display={["flex"]} alignItems={["center"]}>
+        {/* <Box display={["flex"]} alignItems={["center"]}>
           <Text
             display="block"
             _hover={{ color: "orange.500", cursor: "pointer" }}
@@ -252,7 +257,7 @@ const MenuLinks = ({ isOpen, onOpen, onClose }) => {
           <Box display={{ md: "none" }}>
             <ChevronRightIcon />
           </Box>
-        </Box>
+        </Box> */}
       </Stack>
     </Box>
   );
@@ -299,7 +304,7 @@ const NavBarContainer = ({ children, ...props }) => {
     <Box
       display={["flex", "flex", "grid", "grid"]}
       as="nav"
-      justifyContent={["space-between", "space-between", "space-between"]}
+      justifyContent={["space-", "space-between", "space-between"]}
       alignItems={["center", "center", "center", "center"]}
       // w="100vw"
       columnGap={{ md: "2rem", lg: "1.5rem", xl: ".5rem" }}

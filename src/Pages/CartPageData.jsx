@@ -78,6 +78,7 @@ const CartPageSecondryComponent = () => {
         gap={["1rem", "1vmax"]}
         justifyContent={"space-around"}
       >
+        {/* if statement for rendering another page , after the complettion of handle pyment button */}
         <CartItems />
         <CartPaymentPage />
       </Flex>
@@ -489,6 +490,7 @@ const PlaceOrderButton = () => {
 
   const [Total, setTotal] = useState();
   const [Discount, setDiscount] = useState();
+  // to nullify the cart after payment and to render thanking page
 
   useEffect(() => {
     return () => {
@@ -510,14 +512,14 @@ const PlaceOrderButton = () => {
       key: "rzp_test_wTCqSHTTXM4TBH",
       key_secret: "P71rNpytQUHQR5x2K4stDTA1",
       amount: Math.round(Total - Discount) * 100,
-      name: "5s Store",
+      name: "shop-with-me",
       description: "Test Transaction",
       image: "https://i.giphy.com/media/fYqVqRIeSMRsDtUXj8/giphy.webp",
       currency: "USD",
       prefill: {
         // name: cart.map((item) => item.firstname + item.lastname),
-        name: "Vaishali Parekh",
-        email: "5sconceptsvp@gmail.com",
+        name: "jason derulo",
+        email: "hoilephp@hi2.in ",
         method: "netbanking",
       },
       handler: function (response) {
