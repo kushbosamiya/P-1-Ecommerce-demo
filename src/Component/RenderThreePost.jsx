@@ -17,7 +17,7 @@ import "@fontsource/montserrat";
 import "@fontsource/poppins";
 import supabase from "../supabase";
 // style
-import "../Component/RenderThreePost.css";
+// import "../Component/RenderThreePost.css";
 
 import { Link, useParams } from "react-router-dom";
 
@@ -26,6 +26,11 @@ import Header from "../Component/Header";
 import Footer from "../Component/Footer";
 
 const RenderThreePost = () => {
+  // styles
+  const BorderRadiusForImg = {
+    borderRadius: ".25rem",
+  };
+
   const { id } = useParams();
 
   const [Posts, setPosts] = useState([]);
@@ -65,7 +70,10 @@ const RenderThreePost = () => {
   return (
     <>
       <Header />
-      <Grid templateColumns={["none", ".25fr 1fr .25fr"]}>
+      <Grid
+        style={BorderRadiusForImg}
+        templateColumns={["none", ".25fr 1fr .25fr"]}
+      >
         <GridItem
           maxW={"992px"}
           gridColumn={"2/3"}
