@@ -14,7 +14,7 @@ import "@fontsource/poppins";
 import supabase from "../supabase";
 
 import { Link, useParams } from "react-router-dom";
-// icons
+// iconss
 import { BsArrowRightShort } from "react-icons/bs";
 
 const BlogSection = () => {
