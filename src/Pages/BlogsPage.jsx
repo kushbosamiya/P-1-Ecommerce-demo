@@ -18,8 +18,6 @@ import {
 import "@fontsource/montserrat";
 import "@fontsource/poppins";
 import supabase from "../supabase";
-// styles
-import "../Component/RenderThreePost.css";
 
 // default components
 import Header from "../Component/Header";
@@ -41,6 +39,9 @@ const BlogsPage = () => {
 };
 
 const SeveralBlogs = () => {
+  const BorderRadiusForImg = {
+    borderRadius: ".25rem",
+  };
   const [Posts, setPosts] = useState([]);
 
   // const Item = HashnodeData.posts;
@@ -64,6 +65,7 @@ const SeveralBlogs = () => {
       <Grid
         templateColumns={{ md: "repeat(auto-fill, minmax(200px, 1fr)" }}
         justifyContent={"center"}
+        style={BorderRadiusForImg}
       >
         <GridItem
           gridColumn={["none", "1/2"]}
