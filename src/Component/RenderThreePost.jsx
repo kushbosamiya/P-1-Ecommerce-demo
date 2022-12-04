@@ -42,7 +42,7 @@ const RenderThreePost = () => {
     const { data } = await supabase.from("Blogs").select();
 
     if (data.length > 0) {
-      for (let index = 1; index <= 14; index++) {
+      for (let index = 1; index <= 10; index++) {
         DisplaythreePost = [...DisplaythreePost, data[index]];
         setPosts(DisplaythreePost.reverse((item) => item));
       }
