@@ -82,7 +82,7 @@ const BlogSection = () => {
             <Stack
               key={index}
               border="1px solid #E7EBF0"
-              maxW={["300px"]}
+              maxW={["320px"]}
               rounded={"md"}
               flexWrap={"wrap"}
               p={4}

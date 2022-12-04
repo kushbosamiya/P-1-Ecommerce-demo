@@ -39,9 +39,6 @@ const BlogsPage = () => {
 };
 
 const SeveralBlogs = () => {
-  const BorderRadiusForImg = {
-    borderRadius: ".25rem",
-  };
   const [Posts, setPosts] = useState([]);
 
   // const Item = HashnodeData.posts;
@@ -51,7 +48,7 @@ const SeveralBlogs = () => {
     const { data } = await supabase.from("Blogs").select();
 
     if (data.length > 0) {
-      for (let index = 1; index <= 10; index++) {
+      for (let index = 1; index <= 12; index++) {
         DisplaythreePost = [...DisplaythreePost, data[index]];
         setPosts(DisplaythreePost.reverse((item) => item));
       }
@@ -65,7 +62,6 @@ const SeveralBlogs = () => {
       <Grid
         templateColumns={{ md: "repeat(auto-fill, minmax(200px, 1fr)" }}
         justifyContent={"center"}
-        style={BorderRadiusForImg}
       >
         <GridItem
           gridColumn={["none", "1/2"]}

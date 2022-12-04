@@ -27,9 +27,6 @@ import Footer from "../Component/Footer";
 
 const RenderThreePost = () => {
   // styles
-  const BorderRadiusForImg = {
-    borderRadius: ".25rem",
-  };
 
   const { id } = useParams();
 
@@ -42,7 +39,7 @@ const RenderThreePost = () => {
     const { data } = await supabase.from("Blogs").select();
 
     if (data.length > 0) {
-      for (let index = 1; index <= 10; index++) {
+      for (let index = 1; index <= 12; index++) {
         DisplaythreePost = [...DisplaythreePost, data[index]];
         setPosts(DisplaythreePost.reverse((item) => item));
       }
@@ -70,10 +67,7 @@ const RenderThreePost = () => {
   return (
     <>
       <Header />
-      <Grid
-        style={BorderRadiusForImg}
-        templateColumns={["none", ".25fr 1fr .25fr"]}
-      >
+      <Grid templateColumns={["none", ".25fr 1fr .25fr"]}>
         <GridItem
           maxW={"992px"}
           gridColumn={"2/3"}
@@ -91,7 +85,7 @@ const RenderThreePost = () => {
             >
               <Image
                 src={coverImage}
-                // borderRadius={"md"}
+                borderRadius={"md"}
                 maxH={{ md: "380px" }}
                 maxW={{ md: "100%" }}
               />
