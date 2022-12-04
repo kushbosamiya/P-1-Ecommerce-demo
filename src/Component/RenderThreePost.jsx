@@ -17,7 +17,7 @@ import "@fontsource/montserrat";
 import "@fontsource/poppins";
 import supabase from "../supabase";
 // style
-import "./RenderThreePost.css";
+import "../Component/RenderThreePost.css";
 
 import { Link, useParams } from "react-router-dom";
 
