@@ -304,7 +304,7 @@ const NavBarContainer = ({ children, ...props }) => {
     <Box
       display={["flex", "flex", "grid", "grid"]}
       as="nav"
-      justifyContent={["space-", "space-between", "space-between"]}
+      justifyContent={["space-between", "space-between", "space-between"]}
       alignItems={["center", "center", "center", "center"]}
       // w="100vw"
       columnGap={{ md: "2rem", lg: "1.5rem", xl: ".5rem" }}

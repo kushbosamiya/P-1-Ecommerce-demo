@@ -6,6 +6,7 @@ import Footer from "../Component/Footer";
 import NewsLetter from "../Component/NewsLetter";
 import BlogSection from "../Component/BlogComponent";
 import { motion } from "framer-motion";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 const HomePage = () => {
   return (
@@ -18,6 +19,7 @@ const HomePage = () => {
         <Header />
         <Herocarousel />
         <TrendingProd />
+        {/* <Route path="blog/:id" exact element={<BlogSection/>} /> */}
         <BlogSection />
         <NewsLetter />
         <Footer />

@@ -11,14 +11,59 @@ import {
 } from "@chakra-ui/react";
 import { CheckIcon } from "@chakra-ui/icons";
 
+// import supabse
+import supabase from "../supabase";
+import { useState } from "react";
+
+// import uuid
+import { v4 as uuidv4 } from "uuid";
+
 export default function Simple() {
+  const [title, setTitle] = useState("");
+  const [formError, setFormError] = useState(null);
+  const [Id, setId] = useState("");
+  const [CurrentTimeZone, setCurrentTimeZone] = useState("");
+  let CurrentDate = new Date();
+  let Timezone =
+    CurrentDate.getDate() +
+    "-" +
+    CurrentDate.getMonth() +
+    "-" +
+    CurrentDate.getFullYear() +
+    "  /  " +
+    CurrentDate.getHours() +
+    ":" +
+    CurrentDate.getMinutes() +
+    ":" +
+    CurrentDate.getSeconds();
+
+  async function PushMail(e) {
+    e.preventDefault();
+    if (!title) {
+      setFormError("Please fill in all the fields correctly.");
+      return;
+    }
+
+    const { data, error } = await supabase
+      .from("email-data")
+      .insert([{ Id, title, CurrentTimeZone }]);
+
+    if (error) {
+      console.log(error);
+      setFormError("Please fill in all the fields correctly.");
+    }
+    if (data) {
+      console.log(data);
+      setFormError(null);
+    }
+  }
+
   return (
     <Flex
       minH={["20vh", "25vh", "30vh", "35vh"]}
       align={"center"}
       justify={"center"}
       padding={["1rem"]}
-      // bg={useColorModeValue("gray.50", "gray.800")}
       mx={{ xl: "10%", lg: "10%", md: "10%" }}
     >
       <Container
@@ -56,10 +101,17 @@ export default function Simple() {
               required
               placeholder={"Your Email"}
               aria-label={"Your Email"}
+              value={title}
+              onChange={(e) => {
+                setTitle(e.target.value);
+                setId(uuidv4());
+                setCurrentTimeZone(Timezone);
+                // console.log(typeof title + Id + Timezone);
+              }}
             />
           </FormControl>
           <FormControl w={{ base: "100%", md: "40%" }}>
-            <Button w="100%" colorScheme="orange">
+            <Button w="100%" colorScheme="orange" onClick={PushMail}>
               <CheckIcon />
             </Button>
           </FormControl>
